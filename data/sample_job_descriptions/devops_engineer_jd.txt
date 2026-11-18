@@ -1,0 +1,12 @@
+DevOps Engineer - Cloudmesh Systems (fictional company)
+
+Join our platform team to automate delivery and run reliable infrastructure.
+
+Requirements:
+- Strong Linux administration and Bash scripting
+- Hands-on experience with Docker and Kubernetes
+- CI/CD pipelines with Jenkins or GitHub
+- Infrastructure as code using Terraform
+- Experience with AWS or Azure
+- Monitoring using Prometheus and Grafana
+- Python for automation

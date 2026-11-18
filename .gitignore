@@ -1,0 +1,16 @@
+# Secrets - never upload
+.env
+*.key
+
+# Real resumes and personal data - keep them in private/
+private/*
+!private/.gitkeep
+
+# Python / editor
+__pycache__/
+*.pyc
+.venv/
+venv/
+.DS_Store
+.vscode/
+.idea/

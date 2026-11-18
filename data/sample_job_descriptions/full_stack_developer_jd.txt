@@ -1,0 +1,11 @@
+Full Stack Developer - Brightwave Technologies (fictional company)
+
+You will build and maintain web applications end to end for our customers.
+
+Requirements:
+- Proficiency in JavaScript, TypeScript, HTML and CSS
+- Experience with React and Node.js
+- Experience designing REST API services
+- Working knowledge of MongoDB or PostgreSQL
+- Version control with Git, experience with Docker is a plus
+- Good teamwork and problem solving

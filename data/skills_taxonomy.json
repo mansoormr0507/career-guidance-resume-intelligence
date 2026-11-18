@@ -1,0 +1,321 @@
+{
+ "Programming Languages": {
+  "python": [
+   "python3"
+  ],
+  "java": [],
+  "javascript": [
+   "js",
+   "ecmascript"
+  ],
+  "typescript": [
+   "ts"
+  ],
+  "c++": [
+   "cpp"
+  ],
+  "c#": [
+   "csharp",
+   "c sharp"
+  ],
+  "c programming": [
+   "c language"
+  ],
+  "r programming": [
+   "r language",
+   "rstudio"
+  ],
+  "golang": [
+   "go language"
+  ],
+  "kotlin": [],
+  "swift": [],
+  "php": [],
+  "ruby": [],
+  "scala": [],
+  "matlab": [],
+  "bash": [
+   "shell scripting",
+   "shell script"
+  ],
+  "sql": [
+   "structured query language"
+  ],
+  "dart": []
+ },
+ "Web Development": {
+  "html": [
+   "html5"
+  ],
+  "css": [
+   "css3"
+  ],
+  "react": [
+   "reactjs",
+   "react.js"
+  ],
+  "angular": [
+   "angularjs"
+  ],
+  "vue.js": [
+   "vue",
+   "vuejs"
+  ],
+  "node.js": [
+   "nodejs",
+   "node js"
+  ],
+  "express.js": [
+   "expressjs"
+  ],
+  "django": [],
+  "flask": [],
+  "fastapi": [],
+  "spring boot": [
+   "springboot",
+   "spring framework"
+  ],
+  "rest api": [
+   "rest apis",
+   "restful api",
+   "restful apis"
+  ],
+  "graphql": [],
+  "bootstrap": [],
+  "tailwind css": [
+   "tailwind"
+  ],
+  "jquery": []
+ },
+ "Data Science & AI": {
+  "machine learning": [
+   "ml"
+  ],
+  "deep learning": [
+   "neural networks"
+  ],
+  "nlp": [
+   "natural language processing"
+  ],
+  "computer vision": [],
+  "pandas": [],
+  "numpy": [],
+  "scikit-learn": [
+   "sklearn",
+   "scikit learn"
+  ],
+  "tensorflow": [],
+  "keras": [],
+  "pytorch": [],
+  "matplotlib": [],
+  "seaborn": [],
+  "statistics": [
+   "statistical analysis"
+  ],
+  "data analysis": [
+   "data analytics"
+  ],
+  "data visualization": [
+   "data visualisation"
+  ],
+  "feature engineering": [],
+  "opencv": [],
+  "hugging face": [
+   "huggingface",
+   "transformers library"
+  ],
+  "large language models": [
+   "llm",
+   "llms"
+  ],
+  "generative ai": [
+   "genai",
+   "gen ai"
+  ],
+  "prompt engineering": [],
+  "time series": [
+   "time-series"
+  ],
+  "a/b testing": [
+   "ab testing"
+  ],
+  "mlops": [],
+  "model deployment": [
+   "model serving"
+  ],
+  "xgboost": []
+ },
+ "Databases & Data Engineering": {
+  "mysql": [],
+  "postgresql": [
+   "postgres"
+  ],
+  "mongodb": [],
+  "redis": [],
+  "nosql": [],
+  "apache spark": [
+   "spark",
+   "pyspark"
+  ],
+  "hadoop": [],
+  "apache kafka": [
+   "kafka"
+  ],
+  "apache airflow": [
+   "airflow"
+  ],
+  "etl": [
+   "elt",
+   "etl pipelines"
+  ],
+  "data warehousing": [
+   "data warehouse"
+  ],
+  "power bi": [
+   "powerbi"
+  ],
+  "tableau": [],
+  "excel": [
+   "ms excel",
+   "microsoft excel",
+   "advanced excel"
+  ],
+  "snowflake": [],
+  "big data": [],
+  "data modeling": [
+   "data modelling"
+  ],
+  "firebase": []
+ },
+ "Cloud & DevOps": {
+  "aws": [
+   "amazon web services"
+  ],
+  "azure": [
+   "microsoft azure"
+  ],
+  "google cloud": [
+   "gcp",
+   "google cloud platform"
+  ],
+  "docker": [],
+  "kubernetes": [
+   "k8s"
+  ],
+  "terraform": [],
+  "jenkins": [],
+  "ci/cd": [
+   "cicd",
+   "continuous integration"
+  ],
+  "git": [],
+  "github": [],
+  "linux": [],
+  "ansible": [],
+  "prometheus": [],
+  "grafana": [],
+  "microservices": [
+   "microservice"
+  ],
+  "infrastructure as code": [
+   "iac"
+  ],
+  "networking": [
+   "computer networks"
+  ]
+ },
+ "Testing & QA": {
+  "selenium": [],
+  "pytest": [],
+  "junit": [],
+  "unit testing": [],
+  "test automation": [
+   "automation testing"
+  ],
+  "postman": [],
+  "manual testing": [],
+  "api testing": [],
+  "jira": []
+ },
+ "Cybersecurity": {
+  "cybersecurity": [
+   "cyber security",
+   "information security"
+  ],
+  "network security": [],
+  "penetration testing": [
+   "pentesting",
+   "pen testing"
+  ],
+  "siem": [
+   "splunk"
+  ],
+  "ethical hacking": [],
+  "wireshark": [],
+  "owasp": [],
+  "vulnerability assessment": [],
+  "incident response": [],
+  "nmap": [],
+  "kali linux": []
+ },
+ "Mobile": {
+  "android": [
+   "android studio",
+   "android development"
+  ],
+  "ios": [],
+  "flutter": [],
+  "react native": []
+ },
+ "Computer Science Fundamentals": {
+  "data structures": [
+   "algorithms",
+   "dsa",
+   "data structures and algorithms"
+  ],
+  "oop": [
+   "object oriented programming",
+   "object-oriented programming"
+  ],
+  "design patterns": [],
+  "system design": []
+ },
+ "Product, Design & Business": {
+  "figma": [],
+  "ui/ux design": [
+   "ux design",
+   "ui design",
+   "user experience design"
+  ],
+  "wireframing": [
+   "prototyping"
+  ],
+  "user research": [],
+  "product management": [
+   "product roadmap"
+  ],
+  "agile": [],
+  "scrum": [],
+  "project management": [],
+  "stakeholder management": [],
+  "requirement gathering": [
+   "requirements gathering"
+  ],
+  "business analysis": []
+ },
+ "Soft Skills": {
+  "communication": [
+   "communication skills"
+  ],
+  "leadership": [],
+  "teamwork": [
+   "team work",
+   "collaboration"
+  ],
+  "problem solving": [
+   "problem-solving"
+  ],
+  "critical thinking": [],
+  "time management": []
+ }
+}

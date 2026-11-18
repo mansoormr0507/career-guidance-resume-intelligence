@@ -1,0 +1,15 @@
+Data Scientist - Northwind Analytics (fictional company)
+
+We are looking for a Data Scientist to join our analytics team. You will build predictive models, design experiments and present insights to business stakeholders.
+
+Requirements:
+- Strong programming skills in Python and SQL
+- Hands-on experience with pandas, numpy and scikit-learn
+- Solid understanding of statistics and machine learning
+- Experience with data visualization tools such as Tableau or Power BI
+- Excellent communication skills
+
+Nice to have:
+- Knowledge of deep learning (PyTorch or TensorFlow)
+- Experience with A/B testing and feature engineering
+- Familiarity with AWS

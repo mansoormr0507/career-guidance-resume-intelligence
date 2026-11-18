@@ -1,0 +1,118 @@
+{
+  "recommender": {
+    "n_resumes": 264,
+    "n_roles": 22,
+    "random_top1": 0.0455,
+    "variants": {
+      "Text similarity only (TF-IDF)": {
+        "top1": 0.8333,
+        "top3": 0.9811,
+        "top5": 0.9924,
+        "mrr": 0.907
+      },
+      "Skill coverage only": {
+        "top1": 0.947,
+        "top3": 1.0,
+        "top5": 1.0,
+        "mrr": 0.9722
+      },
+      "Text + skills (no fit)": {
+        "top1": 0.8864,
+        "top3": 0.9924,
+        "top5": 0.9962,
+        "mrr": 0.9376
+      },
+      "Combined (default weights)": {
+        "top1": 0.8864,
+        "top3": 0.9924,
+        "top5": 0.9962,
+        "mrr": 0.9376
+      }
+    },
+    "per_role_top1": {
+      "Data Scientist": 0.917,
+      "Machine Learning Engineer": 0.917,
+      "Data Analyst": 0.833,
+      "Data Engineer": 0.917,
+      "Generative AI Engineer": 1.0,
+      "NLP Engineer": 0.917,
+      "Computer Vision Engineer": 1.0,
+      "Backend Developer": 0.667,
+      "Java Developer": 0.917,
+      "Frontend Developer": 0.75,
+      "Full Stack Developer": 0.917,
+      "DevOps Engineer": 0.583,
+      "Cloud Engineer": 0.917,
+      "Cybersecurity Analyst": 1.0,
+      "QA Test Automation Engineer": 0.917,
+      "Mobile App Developer": 0.917,
+      "Business Intelligence Analyst": 0.917,
+      "Business Analyst": 0.917,
+      "Technical Product Manager": 1.0,
+      "UI/UX Designer": 0.833,
+      "Software Engineer": 1.0,
+      "Database Administrator": 0.75
+    },
+    "top_confusions": [
+      {
+        "true": "Data Analyst",
+        "predicted": "Business Intelligence Analyst",
+        "count": 2
+      },
+      {
+        "true": "Backend Developer",
+        "predicted": "Generative AI Engineer",
+        "count": 2
+      },
+      {
+        "true": "DevOps Engineer",
+        "predicted": "Cloud Engineer",
+        "count": 2
+      },
+      {
+        "true": "Data Scientist",
+        "predicted": "Cloud Engineer",
+        "count": 1
+      },
+      {
+        "true": "Machine Learning Engineer",
+        "predicted": "NLP Engineer",
+        "count": 1
+      },
+      {
+        "true": "Data Engineer",
+        "predicted": "Business Intelligence Analyst",
+        "count": 1
+      }
+    ]
+  },
+  "skill_extraction": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "n_resumes": 5,
+    "per_resume": {
+      "aarav_mehta.pdf": {
+        "precision": 1.0,
+        "recall": 1.0
+      },
+      "priya_nair.pdf": {
+        "precision": 1.0,
+        "recall": 1.0
+      },
+      "rohan_iyer.pdf": {
+        "precision": 1.0,
+        "recall": 1.0
+      },
+      "sneha_kulkarni.pdf": {
+        "precision": 1.0,
+        "recall": 1.0
+      },
+      "kabir_singh.pdf": {
+        "precision": 1.0,
+        "recall": 1.0
+      }
+    },
+    "errors": []
+  }
+}
