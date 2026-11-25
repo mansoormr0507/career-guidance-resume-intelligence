@@ -5,6 +5,7 @@ environment variables / a local .env file, never from code, and are never printe
 Transient failures (rate limits, timeouts, network, 5xx) are retried with exponential backoff.
 """
 import os
+import re
 import time
 
 from dotenv import load_dotenv
@@ -67,21 +68,43 @@ def _call_gemini(key, model, system, messages, max_tokens):
     from google.genai import types
     client = genai.Client(api_key=key)
     contents = [types.Content(role="user" if m["role"] == "user" else "model", parts=[types.Part(text=m["content"])]) for m in messages]
+    # Newer Gemini models "think" first, and thinking tokens count against the output limit. Without extra
+    # headroom a small limit can be used up entirely by thinking, leaving an empty answer.
     resp = client.models.generate_content(model=model, contents=contents,
-                                          config=types.GenerateContentConfig(system_instruction=system, max_output_tokens=max_tokens))
-    return resp.text or ""
+                                          config=types.GenerateContentConfig(system_instruction=system, max_output_tokens=max_tokens + 2048))
+    text = getattr(resp, "text", None)
+    if not text:
+        candidates = getattr(resp, "candidates", None) or []
+        reason = getattr(candidates[0], "finish_reason", None) if candidates else None
+        block = getattr(getattr(resp, "prompt_feedback", None), "block_reason", None)
+        raise LLMError(f"Gemini returned no text (finish reason: {reason or 'unknown'}{', blocked: ' + str(block) if block else ''}). "
+                       "Try again, or set LLM_MODEL to a different Gemini model.")
+    return text
 
 
 ADAPTERS = {"anthropic": _call_anthropic, "openai": _call_openai, "gemini": _call_gemini}
 PACKAGES = {"anthropic": "anthropic", "openai": "openai", "gemini": "google-genai"}
 
 
+def _detail(exc: Exception, key: str = "") -> str:
+    """Short error description with any API key removed."""
+    text = str(exc).replace("\n", " ")[:220]
+    if key:
+        text = text.replace(key, "***")
+    return re.sub(r"AIza[0-9A-Za-z_-]{10,}|sk-[0-9A-Za-z_-]{10,}", "***", text)
+
+
 def classify_error(exc: Exception) -> str:
-    """'auth' (never retry), 'retry' (transient) or 'fatal'."""
+    """'auth' (never retry), 'model' (wrong/retired model name), 'retry' (transient) or 'fatal'."""
     name = type(exc).__name__.lower()
     code = getattr(exc, "status_code", None) or getattr(exc, "code", None)
+    msg = str(exc).lower()
     if code in (401, 403) or any(k in name for k in ("authentication", "permissiondenied", "unauthenticated")):
         return "auth"
+    if code == 400 and ("api key" in msg or "api_key" in msg):          # Gemini reports a bad key as HTTP 400
+        return "auth"
+    if code == 404 or "not found" in msg or "no longer available" in msg or "deprecated" in msg:
+        return "model"
     if code in (429, 500, 502, 503, 504, 529) or any(k in name for k in ("ratelimit", "timeout", "connection", "unavailable", "overloaded", "internalserver", "servererror")):
         return "retry"
     return "fatal"
@@ -108,9 +131,12 @@ def ask(system: str, messages: list, max_tokens: int = 700) -> str:
             kind = classify_error(exc)
             if kind == "auth":
                 raise LLMError(f"Authentication failed for {prov}: please check your API key.") from None
+            if kind == "model":
+                raise LLMError(f"Model '{model}' was not found or has been retired. Set LLM_MODEL in your .env file to a current model name "
+                               f"from the {prov} model list. ({_detail(exc, key)})") from None
             if kind == "retry" and attempt < config.MAX_LLM_RETRIES:
                 time.sleep(2 ** attempt)               # 2 s, then 4 s
                 continue
             if kind == "retry":
-                raise LLMError(f"The {prov} service is unavailable or rate-limited. Please try again later.") from None
-            raise LLMError(f"The {prov} request failed ({type(exc).__name__}).") from None
+                raise LLMError(f"The {prov} service is unavailable or rate-limited (free plans have strict limits). Please wait a minute and try again. ({_detail(exc, key)})") from None
+            raise LLMError(f"The {prov} request failed: {type(exc).__name__}: {_detail(exc, key)}") from None

@@ -297,6 +297,16 @@ class LlmClientTests(unittest.TestCase):
         self.assertEqual(len(calls), 1)
         self.assertIn("API key", str(out)); self.assertNotIn("SECRET", str(out))
 
+    def test_gemini_style_bad_key_is_auth_error(self):
+        def bad(kw): raise _Err("API key not valid. Please pass a valid API key. AIzaSyFAKEKEYFAKEKEY12345", 400)
+        out, _ = self.run_ask(ENV, {"anthropic": fake_anthropic(bad)})
+        self.assertIn("check your API key", str(out)); self.assertNotIn("AIza", str(out))
+
+    def test_retired_model_gives_helpful_message_without_key(self):
+        def gone(kw): raise _Err("404 models/old-model is not found. key=sk-SECRET-123", 404)
+        out, sleep = self.run_ask(ENV, {"anthropic": fake_anthropic(gone)})
+        self.assertIn("LLM_MODEL", str(out)); self.assertNotIn("SECRET", str(out)); sleep.assert_not_called()
+
     def test_missing_key(self):
         out, _ = self.run_ask({**ENV, "ANTHROPIC_API_KEY": ""}, {})
         self.assertIn("No API key", str(out))

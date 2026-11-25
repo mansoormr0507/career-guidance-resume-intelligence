@@ -26,7 +26,7 @@ PREFERRED_WEIGHT = 0.5
 
 # --- LLM -------------------------------------------------------------------
 KEY_VARS = {"anthropic": "ANTHROPIC_API_KEY", "openai": "OPENAI_API_KEY", "gemini": "GEMINI_API_KEY"}
-DEFAULT_MODELS = {"anthropic": "claude-sonnet-5-5", "openai": "gpt-4o-mini", "gemini": "gemini-2.0-flash"}
+DEFAULT_MODELS = {"anthropic": "claude-sonnet-5-5", "openai": "gpt-4o-mini", "gemini": "gemini-3.6-flash"}
 MAX_LLM_RETRIES = 3
 LLM_TIMEOUT_S = 40
 MAX_CONTEXT_CHARS = 6000      # resume text sent to an LLM is truncated to this length

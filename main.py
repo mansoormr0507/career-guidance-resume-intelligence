@@ -19,7 +19,7 @@ from src.career_assistant import improve_resume, learning_roadmap, professional_
 from src.chatbot import run_chatbot
 from src.evaluation import run_evaluation
 from src.jd_matcher import match_resume_to_jd, read_jd_file, read_jd_terminal, skill_gap_report
-from src.llm_client import llm_status, provider
+from src.llm_client import LLMError, ask, llm_status, provider
 from src.pdf_parser import ResumeFileError, extract_text
 from src.privacy import ask_consent
 from src.recommender import build_model, format_recommendations, load_model, recommend
@@ -108,6 +108,7 @@ def build_parser() -> argparse.ArgumentParser:
     sub = parser.add_subparsers(dest="command", required=True)
     sub.add_parser("build-model", help="build and save the TF-IDF career recommendation model")
     sub.add_parser("evaluate", help="evaluate the recommender and skill extractor")
+    sub.add_parser("check-ai", help="test your AI provider, key and model settings")
     for name, h in [("analyze", "extract structured information from a resume PDF"), ("recommend", "recommend suitable career paths"),
                     ("match", "compare a resume with a job description"), ("improve", "AI resume improvement and guidance"),
                     ("chat", "interactive career guidance chatbot")]:
@@ -141,6 +142,14 @@ def main() -> None:
         build_model()
     elif args.command == "evaluate":
         run_evaluation()
+    elif args.command == "check-ai":
+        ok, message = llm_status()
+        print(message)
+        if ok:
+            try:
+                print("AI is working. Reply:", ask("Answer in one short sentence.", [{"role": "user", "content": "Say OK and name the model family you are."}], 60))
+            except LLMError as exc:
+                sys.exit(f"AI check failed: {exc}")
     elif args.command == "analyze":
         resume = load_resume(args.resume)
         print_analysis(resume)
